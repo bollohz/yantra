@@ -1,0 +1,37 @@
+{
+  "generalProvider": "AWS",
+  "resources": [
+    {
+      "type": "AWS->Constructs->SqsQueue",
+      "id": "deadLetterCoda",
+      "constructProps": {
+        "queueName": "deadLetterCoda"
+      }
+    },
+    {
+      "type": "AWS->Classes->SqsEventSource",
+      "id": "sqsEventCoda",
+      "constructProps": {
+        "queue": "deadLetterCoda"
+      }
+    },
+    {
+      "type": "AWS->Constructs->LambdaFunction",
+      "id": "first-lambda",
+      "constructProps": {
+        "code": "AWS->Classes->LambdaCode=>>inline::()=>{}",
+        "handler": "index.handler",
+        "runtime": "AWS->Enums->LambdaRuntime=>>NODEJS_10_X"
+      },
+      "optionalProps": {
+        "functionName": "testlambda",
+        "events": [
+          "sqsEventCoda"
+        ]
+      }
+    }
+  ]
+}
+
+
+

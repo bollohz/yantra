@@ -1,0 +1,30 @@
+{
+  "registeredProviders": [
+    "AWS"
+  ],
+  "providers": [
+    {
+      "paths": {
+        "DSL": "AWS",
+        "structs": "aws/structs",
+        "factory": "aws/factory",
+        "init": "aws/init"
+      },
+      "structs": [
+        {
+          "name": "Constructs",
+          "reference": "constructs",
+          "new": true
+        },
+        {
+          "name": "Classes",
+          "reference": "classes"
+        },
+        {
+          "name": "Enums",
+          "reference": "enums"
+        }
+      ]
+    }
+  ]
+}
